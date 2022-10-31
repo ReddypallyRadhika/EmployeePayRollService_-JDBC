@@ -4,11 +4,32 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+/*UC3
+Ability to update the salary i.e.
+the base pay for Employee
+Terisa to 3000000.00 and sync it
+with Database
+- Update the employee payroll in the database
+- Update the Employee Payroll Object with the Updated
+Salary
+- Compare Employee Payroll Object with DB to pass the
+Junit Test.
+- Any Error throw Custom Exceptions
+ */
 public class EmployeePayrollDBService {
 
     private PreparedStatement employeePayrollDataStatement;
     private static EmployeePayrollDBService employeePayrollDBService;
+
+    public EmployeePayrollDBService() {
+    }
+
+    // Method -- class method -- one instance will be there only... if you call it one or more it will be same.
+    public static EmployeePayrollDBService getInstance(){
+        if (employeePayrollDBService == null)
+            employeePayrollDBService = new EmployeePayrollDBService();
+        return employeePayrollDBService;
+    }
 
     private Connection getConnection() throws SQLException {
         String jdbcUrl = "jdbc:mysql://127.0.0.7:3306/payroll_service?useSSL=false";
@@ -58,7 +79,7 @@ public class EmployeePayrollDBService {
 
     //SQL injection
     private int updateEmployeeDataUsingStatement(String name, double salary){
-        String sqlStatement = String.format("Update employee_payroll set basic_pay = %.2f where name='%s;",salary,name);
+        String sqlStatement = String.format("Update employee_payroll set basic_pay = %.2f where empName='%s';",salary,name);
 
 
         try(Connection connection = getConnection()){
@@ -75,7 +96,7 @@ public class EmployeePayrollDBService {
     private void prepareStatementForEmployeeData(){
         try {
             Connection connection = this.getConnection();
-            String sqlStatement = "Select * from employee_payroll where name = ?;";
+            String sqlStatement = "Select * from employee_payroll where empName = ?;";
             employeePayrollDataStatement = connection.prepareStatement(sqlStatement);
 
         } catch (SQLException e){

@@ -12,9 +12,11 @@ public class EmployeePayrollService {
 	public enum IOService {
 		CONSOLE_IO, FILE_IO, DB_IO, REST_IO
 	}
-	
+
 	public EmployeePayrollService() {
+		employeePayrollDBService = EmployeePayrollDBService.getInstance();
 	}
+
 
 	private List<EmployeePayrollData> employeePayrollList;
 
@@ -97,7 +99,11 @@ public class EmployeePayrollService {
 	}
 
 
+	public boolean checkEmployeePayrollInSyncWithDB(String name){
+		List<EmployeePayrollData> employeePayrollDataList = employeePayrollDBService.getEmployeePayrollData(name);
+		return  employeePayrollDataList.get(0).equals(getEmployeePayrollData(name));
 
+	}
 
 
 
@@ -114,7 +120,7 @@ public class EmployeePayrollService {
 		employeePayrollList.forEach(System.out::println);  // java 8 feature
 
 
-		// with for loop
+	/*	// with for loop
 		System.out.println();
 		for(int i =0; i<employeePayrollList.size();i++){
 			System.out.println(employeePayrollList.get(i));
@@ -127,7 +133,7 @@ public class EmployeePayrollService {
 
 		while (sample.hasNext()){
 			System.out.println(sample.next());
-		}
+		}*/
 
 
 	}

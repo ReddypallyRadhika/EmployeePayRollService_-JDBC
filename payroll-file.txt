@@ -1,1 +1,3 @@
-EmployeeId: 25, EmployeeName: Ajinkya, EmployeeSalary: 354654.0
+EmployeeId: 1, EmployeeName: Jeff Bezos, EmployeeSalary: 100000.0
+EmployeeId: 2, EmployeeName: Bill Gates, EmployeeSalary: 200000.0
+EmployeeId: 3, EmployeeName: Mark Zuckerberg, EmployeeSalary: 300000.0
