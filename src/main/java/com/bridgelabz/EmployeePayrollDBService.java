@@ -4,16 +4,16 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-/*UC3
-Ability to update the salary i.e.
-the base pay for Employee
-Terisa to 3000000.00 and sync it
-with Database
-- Update the employee payroll in the database
-- Update the Employee Payroll Object with the Updated
+/*UC4
+Ability to update the salary i.e. the
+base pay for Employee Terisa to
+3000000.00 and sync it with Database
+using JDBC PreparedStatement - Update the employee payroll in the database - Update the Employee Payroll Object with the Updated
 Salary
 - Compare Employee Payroll Object with DB to pass the
-Junit Test.
+Junit Test
+.
+
 - Any Error throw Custom Exceptions
  */
 public class EmployeePayrollDBService {
