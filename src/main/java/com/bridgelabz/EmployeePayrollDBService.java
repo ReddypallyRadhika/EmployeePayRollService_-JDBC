@@ -5,17 +5,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 /*UC4
-Ability to update the salary i.e. the
-base pay for Employee Terisa to
-3000000.00 and sync it with Database
-using JDBC PreparedStatement - Update the employee payroll in the database - Update the Employee Payroll Object with the Updated
-Salary
-- Compare Employee Payroll Object with DB to pass the
-Junit Test
-.
-
-- Any Error throw Custom Exceptions
- */
+Refactor Code to do the
+following
+- Create PreparedStatement to retrieve payroll data by
+name
+- Cache the PreparedStatement at the Driver and DB
+Level
+- Make Payroll DB Service Object as Singleton so
+PreparedStatement is cached in the Program
+- Reuse the ResultSet to populate EmployeePayrollData
+Object
+*/
 public class EmployeePayrollDBService {
 
     private PreparedStatement employeePayrollDataStatement;
